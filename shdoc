@@ -1,6 +1,9 @@
 #!/usr/bin/awk -f
 
 BEGIN {
+    doc_constants = ""
+    toc = "## Functions\n"
+    
     if (! style) {
         style = "github"
     }
@@ -22,6 +25,9 @@ BEGIN {
 
     styles["github", "/code", "to"] = "```"
 
+    styles["github", "const", "from"] = "^(\\S+)\\s"
+    styles["github", "const", "to"] = "**\\1** "
+    
     styles["github", "argN", "from"] = "^(\\$[0-9]) (\\S+)"
     styles["github", "argN", "to"] = "**\\1** (\\2):"
 
@@ -129,6 +135,18 @@ in_example {
     docblock = docblock render("li", $0) "\n"
 }
 
+/^[[:space:]]*# @constant/ {
+    if (doc_constants == "") {
+        doc_constants = render("h2", "Constants") "\n\n"
+    }
+
+    sub(/^[[:space:]]*# @constant /, "")
+
+    $0 = render("const", $0)
+
+    doc_constants = doc_constants render("li", $0) "\n"
+}
+
 /^[[:space:]]*# @noargs/ {
     docblock = docblock "\n" render("i", "Function has no arguments.") "\n"
 }
@@ -175,7 +193,7 @@ in_example {
             "g" \
         )
 
-        doc = doc "\n" render("h2", func_name) "\n" docblock
+        doc = doc render("h2", func_name) "\n" docblock "\n"
 
         url = func_name
         if (style == "github") {
@@ -185,7 +203,7 @@ in_example {
           gsub(/ /, "-", url)
         }
 
-        toc = toc "\n" "* [" func_name "](#" url ")"
+        toc = toc "* [" func_name "](#" url ")" "\n"
     }
 
     docblock = ""
@@ -194,7 +212,10 @@ in_example {
 
 END {
     if (filedoc != "") {
-        print filedoc
+        print filedoc "\n"
+    }
+    if (doc_constants != "") {
+        print doc_constants "\n"
     }
     print toc
     print ""
