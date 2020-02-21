@@ -28,7 +28,7 @@ BEGIN {
 
     styles["github", "/code", "to"] = "```"
 
-    styles["github", "const", "from"] = "^(\\S+)\\s"
+    styles["github", "const", "from"] = "^(\\S+)(\\s+|$)"
     styles["github", "const", "to"] = "**\\1** "
     
     styles["github", "argN", "from"] = "^(\\$[0-9]) (\\S+)"
@@ -136,6 +136,15 @@ in_example {
     $0 = render("arg@", $0)
 
     docblock = docblock render("li", $0) "\n"
+}
+
+/^[[:space:]]*# @constant-header/ {
+    if (doc_constants == "") {
+        doc_constants = render("h2", "Constants") "\n\n"
+    }
+    sub(/^[[:space:]]*# @constant-header /, "")
+
+    doc_constants = doc_constants render("h3", $0) "\n"
 }
 
 /^[[:space:]]*# @constant/ {

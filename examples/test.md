@@ -4,8 +4,18 @@ Small description of the script.
 
 ## Constants
 
+### Terminal color codes
+* **Color_Off** Disable color
 * **Color_Off** Disable color
 * **Black** Black color
+* **Red** 
+* **Green** 
+* **Yellow** 
+* **Blue** 
+* **Purple** 
+* **Cyan** 
+* **White** 
+* **Orange** 
 
 
 ## Functions
