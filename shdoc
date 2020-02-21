@@ -20,6 +20,9 @@ BEGIN {
     styles["github", "h4", "from"] = ".*"
     styles["github", "h4", "to"] = "#### &"
 
+    styles["github", "h5", "from"] = ".*"
+    styles["github", "h5", "to"] = "#### &"
+
     styles["github", "code", "from"] = ".*"
     styles["github", "code", "to"] = "```&"
 
@@ -116,7 +119,7 @@ in_example {
 /^[[:space:]]*# @example/ {
     in_example = 1
 
-    docblock = docblock "\n" render("h3", "Example")
+    docblock = docblock "\n" render("h4", "Example")
     docblock = docblock "\n\n" render("code", "bash")
 }
 
@@ -124,7 +127,7 @@ in_example {
     if (!has_args) {
         has_args = 1
 
-        docblock = docblock "\n" render("h3", "Arguments") "\n\n"
+        docblock = docblock "\n" render("h4", "Arguments") "\n\n"
     }
 
     sub(/^[[:space:]]*# @arg /, "")
@@ -155,7 +158,7 @@ in_example {
     if (!has_exitcode) {
         has_exitcode = 1
 
-        docblock = docblock "\n" render("h3", "Exit codes") "\n\n"
+        docblock = docblock "\n" render("h4", "Exit codes") "\n\n"
     }
 
     sub(/^[[:space:]]*# @exitcode /, "")
@@ -171,7 +174,7 @@ in_example {
     $0 = render("anchor", $0)
     $0 = render("li", $0)
 
-    docblock = docblock "\n" render("h4", "See also") "\n\n" $0 "\n"
+    docblock = docblock "\n" render("h5", "See also") "\n\n" $0 "\n"
 }
 
 /^[[:space:]]*# @stdout/ {
@@ -179,7 +182,7 @@ in_example {
 
     sub(/^[[:space:]]*# @stdout /, "")
 
-    docblock = docblock "\n" render("h3", "Output on stdout")
+    docblock = docblock "\n" render("h4", "Output on stdout")
     docblock = docblock "\n\n" render("li", $0) "\n"
 }
 
@@ -193,7 +196,7 @@ in_example {
             "g" \
         )
 
-        doc = doc render("h2", func_name) "\n" docblock "\n"
+        doc = doc render("h3", func_name) "\n" docblock "\n"
 
         url = func_name
         if (style == "github") {
