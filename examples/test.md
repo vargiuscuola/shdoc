@@ -18,7 +18,7 @@ Small description of the script.
 ## Parameters
 
 ### Prova
-* **var1** (string)[default: blah]:  Descrizione
+* **var1** (string)[default: **blah**]:  Descrizione
 
 
 ## Functions
