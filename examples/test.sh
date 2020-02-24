@@ -16,8 +16,12 @@ import:use "github.com/reconquest/test-runner.bash"
 # @constant On_Black,On_Red,On_Green,On_Yellow,On_Blue,On_Purple,On_Cyan,On_White            Background Colors
 # @constant On_IBlack,On_IRed,On_IGreen,On_IYellow,On_IBlue,On_IPurple,On_ICyan,On_IWhite    High Intensty Background Colors
 
-# @param-header Prova
-# @param var1 string[blah]  Descrizione
+# @constant-header Others
+# @constant True True Value (0)
+# @constant False False Value (1)
+
+# @param-header General Parameters
+# @param param1 string[val1] Description
 
 # Bold
 BBlack='\e[1;30m' BRed='\e[1;31m' BGreen='\e[1;32m' BYellow='\e[1;33m' BBlue='\e[1;34m' BPurple='\e[1;35m' BCyan='\e[1;36m' BWhite='\e[1;37m'

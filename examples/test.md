@@ -13,12 +13,15 @@ Small description of the script.
 * **BIBlack,BIRed,BIGreen,BIYellow,BIBlue,BIPurple,BICyan,BIWhite**: Bold High Intensty Colors
 * **On_Black,On_Red,On_Green,On_Yellow,On_Blue,On_Purple,On_Cyan,On_White**: Background Colors
 * **On_IBlack,On_IRed,On_IGreen,On_IYellow,On_IBlue,On_IPurple,On_ICyan,On_IWhite**: High Intensty Background Colors
+### Others
+* **True**: True Value (0)
+* **False**: False Value (1)
 
 
 ## Parameters
 
-### Prova
-* **var1** (string)[default: **blah**]:  Descrizione
+### General Parameters
+* **param1** (string)[default: **val1**]: Description
 
 
 ## Functions
