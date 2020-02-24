@@ -31,6 +31,9 @@ BEGIN {
     styles["github", "const", "from"] = "^(\\S+)(\\s+|$)"
     styles["github", "const", "to"] = "**\\1**: "
     
+    styles["github", "param", "from"] = "^(\\S+)\\s+(\\S+)\\s*\\[(\\S+)]"
+    styles["github", "param", "to"] = "**\\1** (\\2)[default: \\3]:"
+    
     styles["github", "argN", "from"] = "^(\\$[0-9]) (\\S+)"
     styles["github", "argN", "to"] = "**\\1** (\\2):"
 
@@ -138,6 +141,27 @@ in_example {
     docblock = docblock render("li", $0) "\n"
 }
 
+/^[[:space:]]*# @param-header/ {
+    if (doc_params == "") {
+        doc_params = render("h2", "Parameters") "\n\n"
+    }
+    sub(/^[[:space:]]*# @param-header /, "")
+
+    doc_params = doc_params render("h3", $0) "\n"
+}
+
+/^[[:space:]]*# @param/ {
+    if (doc_params == "") {
+        doc_params = render("h2", "Parameters") "\n\n"
+    }
+
+    sub(/^[[:space:]]*# @param /, "")
+
+    $0 = render("param", $0)
+
+    doc_params = doc_params render("li", $0) "\n"
+}
+
 /^[[:space:]]*# @constant-header/ {
     if (doc_constants == "") {
         doc_constants = render("h2", "Constants") "\n\n"
@@ -228,6 +252,9 @@ END {
     }
     if (doc_constants != "") {
         print doc_constants "\n"
+    }
+    if (doc_params != "") {
+        print doc_params "\n"
     }
     print toc
     print ""

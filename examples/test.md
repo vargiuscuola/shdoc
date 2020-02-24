@@ -15,6 +15,12 @@ Small description of the script.
 * **On_IBlack,On_IRed,On_IGreen,On_IYellow,On_IBlue,On_IPurple,On_ICyan,On_IWhite**: High Intensty Background Colors
 
 
+## Parameters
+
+### Prova
+* **var1** (string)[default: blah]:  Descrizione
+
+
 ## Functions
 * [some:first:func()](#somefirstfunc)
 
