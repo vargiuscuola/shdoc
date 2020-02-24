@@ -1,3 +1,8 @@
+#!/bin/bash
+
+source ../import.bash/import.bash
+import:use "github.com/reconquest/test-runner.bash"
+
 # @file Title of file script
 # @brief Small description of the script.
 
@@ -27,6 +32,29 @@ BIBlack='\e[1;90m' BIRed='\e[1;91m' BIGreen='\e[1;92m' BIYellow='\e[1;93m' BIBlu
 # High Intensity backgrounds
 On_IBlack='\e[0;100m' On_IRed='\e[0;101m' On_IGreen='\e[0;102m' On_IYellow='\e[0;103m' On_IBlue='\e[0;104m' On_IPurple='\e[10;95m' On_ICyan='\e[0;106m' On_IWhite='\e[0;107m'
 
+# @internal
+# @description Multiline description goes here and
+# there
+#
+# @example
+#   some:other:func a b c
+#   echo 123
+#
+# @arg $1 string Some arg.
+# @arg $@ any Rest of arguments.
+#
+# @noargs
+#
+# @exitcode 0  If successfull.
+# @exitcode >0 On failure
+# @exitcode 5  On some error.
+#
+# @stdout Path to something.
+#
+# @see some:other:func()
+some:internal:func() {
+echo "ok"
+}
 
 # @description Multiline description goes here and
 # there
@@ -48,4 +76,5 @@ On_IBlack='\e[0;100m' On_IRed='\e[0;101m' On_IGreen='\e[0;102m' On_IYellow='\e[0
 #
 # @see some:other:func()
 some:first:func() {
+echo "ok"
 }

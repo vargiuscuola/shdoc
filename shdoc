@@ -2,6 +2,8 @@
 
 BEGIN {
     doc_constants = ""
+    internal_functions = ""
+    toc_internals = "## Internal Functions\n"
     toc = "## Functions\n"
     
     if (! style) {
@@ -220,25 +222,24 @@ in_example {
 }
 
 /^[ \t]*(function([ \t])+)?([a-zA-Z0-9_:-]+)([ \t]*)(\(([ \t]*)\))?[ \t]*\{/ && docblock != "" {
+    func_name = gensub(\
+        /^[ \t]*(function([ \t])+)?([a-zA-Z0-9_:-]+)[ \t]*\(.*/, \
+        "\\3()", \
+        "g" \
+    )
+    url = func_name
+    if (style == "github") {
+        # https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/toc_filter.rb#L44-L45
+        url = tolower(url)
+        gsub(/[^[:alnum:] -]/, "", url)
+        gsub(/ /, "-", url)
+    }
     if (is_internal) {
         is_internal = 0
+        internal_functions = internal_functions render("h3", func_name) "\n" docblock "\n"
+        toc_internals = toc_internals "* [" func_name "](#" url ")" "\n"
     } else {
-        func_name = gensub(\
-            /^[ \t]*(function([ \t])+)?([a-zA-Z0-9_:-]+)[ \t]*\(.*/, \
-            "\\3()", \
-            "g" \
-        )
-
         doc = doc render("h3", func_name) "\n" docblock "\n"
-
-        url = func_name
-        if (style == "github") {
-          # https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/toc_filter.rb#L44-L45
-          url = tolower(url)
-          gsub(/[^[:alnum:] -]/, "", url)
-          gsub(/ /, "-", url)
-        }
-
         toc = toc "* [" func_name "](#" url ")" "\n"
     }
 
@@ -259,4 +260,7 @@ END {
     print toc
     print ""
     print doc
+    if (internal_functions != "") {
+        print "\n" toc_internals "\n\n" internal_functions
+    }
 }
