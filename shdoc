@@ -31,6 +31,9 @@ BEGIN {
     styles["github", "const", "from"] = "^(\\S+)(\\s+|$)"
     styles["github", "const", "to"] = "**\\1** "
     
+#    styles["github", "const", "from"] = "^(\\*[^,]+,)*([^,]+)(,|\\s+|$))"
+#    styles["github", "const", "to"] = "**\\2**\\3"
+
     styles["github", "argN", "from"] = "^(\\$[0-9]) (\\S+)"
     styles["github", "argN", "to"] = "**\\1** (\\2):"
 

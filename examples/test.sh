@@ -2,9 +2,9 @@
 # @brief Small description of the script.
 
 # @constant-header Terminal color codes
+# @constant const1,const2,const3    prova
 # @constant Color_Off Disable color
-# @constant Color_Off Disable color
-# @constant Black Black color
+# @constant Black
 # @constant Red
 # @constant Green
 # @constant Yellow
@@ -13,6 +13,30 @@
 # @constant Cyan
 # @constant White
 # @constant Orange
+# @constant BBlack
+# @constant BRed
+# @constant BGreen
+# @constant BYellow
+# @constant BBlue
+# @constant BPurple
+# @constant BCyan
+# @constant BWhite
+# @constant UBlack
+# @constant URed
+# @constant UGreen
+# @constant UYellow
+# @constant UBlue
+# @constant UPurple
+# @constant UCyan
+# @constant UWhite
+# @constant IBlack
+# @constant IRed
+# @constant IGreen
+# @constant IYellow
+# @constant IBlue
+# @constant IPurple
+# @constant ICyan
+# @constant IWhite
 # Bold
 BBlack='\e[1;30m' BRed='\e[1;31m' BGreen='\e[1;32m' BYellow='\e[1;33m' BBlue='\e[1;34m' BPurple='\e[1;35m' BCyan='\e[1;36m' BWhite='\e[1;37m'
 # Underline

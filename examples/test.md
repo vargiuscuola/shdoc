@@ -5,9 +5,9 @@ Small description of the script.
 ## Constants
 
 ### Terminal color codes
+* **const1,const2,const3** prova
 * **Color_Off** Disable color
-* **Color_Off** Disable color
-* **Black** Black color
+* **Black** 
 * **Red** 
 * **Green** 
 * **Yellow** 
@@ -16,6 +16,30 @@ Small description of the script.
 * **Cyan** 
 * **White** 
 * **Orange** 
+* **BBlack** 
+* **BRed** 
+* **BGreen** 
+* **BYellow** 
+* **BBlue** 
+* **BPurple** 
+* **BCyan** 
+* **BWhite** 
+* **UBlack** 
+* **URed** 
+* **UGreen** 
+* **UYellow** 
+* **UBlue** 
+* **UPurple** 
+* **UCyan** 
+* **UWhite** 
+* **IBlack** 
+* **IRed** 
+* **IGreen** 
+* **IYellow** 
+* **IBlue** 
+* **IPurple** 
+* **ICyan** 
+* **IWhite** 
 
 
 ## Functions
