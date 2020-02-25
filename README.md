@@ -144,5 +144,6 @@ The above definition will produce following output:
 
 See example documentation on:
 
+* [test.sh](examples/test.md)
 * [tests.sh](https://github.com/reconquest/tests.sh/blob/master/REFERENCE.md)
 * [coproc.bash](https://github.com/reconquest/coproc.bash/blob/master/REFERENCE.md)
