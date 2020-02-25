@@ -3,6 +3,7 @@
 BEGIN {
     doc_constants = ""
     internal_functions = ""
+    is_show_internal = 0
     toc_internals = "## Internal Functions\n"
     toc = "## Functions\n"
     
@@ -69,6 +70,10 @@ function reset() {
     has_args = 0
     has_exitcode = 0
     has_stdout = 0
+}
+
+/^[[:space:]]*# @show-internal/ {
+    is_show_internal = 1
 }
 
 /^[[:space:]]*# @internal/ {
@@ -260,7 +265,7 @@ END {
     print toc
     print ""
     print doc
-    if (internal_functions != "") {
+    if (internal_functions != "" && is_show_internal == 1) {
         print "\n" toc_internals "\n\n" internal_functions
     }
 }

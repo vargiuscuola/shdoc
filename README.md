@@ -102,12 +102,15 @@ When you want to skip documentation generation for particular function, use `@in
 It allows you to have the same style of doc comments across the script and keep internal
 functions hidden from users.
 
+If you want to generate documentation also for internal functions, you can use the directive `# @show-internal` anywhere in the file, probably better at the top of the file.
+
 ## Constant and parameters tags
 shdoc will match comments in the following for constant and parameters definitions:
 ```sh
 # @constant-header Terminal color codes
-# @constant Color_Off Disable color
-# @constant Black,Red,Green,Yellow,Blue,Purple,Cyan,Orange                                   Regular Colors
+# @constant Color_Off                                       Disable color
+# @constant Black,Red,Green,Yellow,Blue,Purple,Cyan,Orange  Regular Colors
+
 # @constant-header Others
 # @constant True True Value (0)
 # @constant False False Value (1)
