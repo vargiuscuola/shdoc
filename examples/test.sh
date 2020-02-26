@@ -1,8 +1,5 @@
 #!/bin/bash
 
-source ../import.bash/import.bash
-import:use "github.com/reconquest/test-runner.bash"
-
 # @file Title of file script
 # @brief Small description of the script.
 # @show-internal
