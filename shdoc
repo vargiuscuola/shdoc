@@ -222,6 +222,18 @@ in_example {
     docblock = docblock "\n" render("i", "Function has no arguments.") "\n"
 }
 
+/^[[:space:]]*# @exitcodes/ {
+    if (!has_exitcode) {
+        has_exitcode = 1
+
+        docblock = docblock "\n" render("h4", "Exit codes") "\n\n"
+    }
+
+    sub(/^[[:space:]]*# @exitcodes /, "")
+
+    docblock = docblock render("li", $0) "\n"
+}
+
 /^[[:space:]]*# @return/ {
     if (!has_return) {
         has_return = 1

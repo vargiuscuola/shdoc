@@ -48,6 +48,7 @@ shdoc will match comments in the following form before function definitions:
 # @exitcode 0  If successfull.
 # @exitcode \>0 On failure
 # @exitcode 5  On some error.
+# @exitcodes Standard exit codes (alternative to @exitcode)
 #
 # @stdout Path to something.
 # @stderr Error messages.
@@ -91,6 +92,7 @@ _Function has no arguments._
 * **0**:  If successfull.
 * **\>0**: On failure
 * **5**:  On some error.
+* Standard exit codes (alternative to @exitcode)
 
 ### Output on stdout
 
