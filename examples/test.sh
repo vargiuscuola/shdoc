@@ -53,6 +53,7 @@ On_IBlack='\e[0;100m' On_IRed='\e[0;101m' On_IGreen='\e[0;102m' On_IYellow='\e[0
 # @exitcode 0  If successfull.
 # @exitcode \>0 On failure
 # @exitcode 5  On some error.
+# @exitcodes Standard exit codes (alternative to @exitcode)
 #
 # @stdout Path to something.
 #
