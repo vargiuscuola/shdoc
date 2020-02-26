@@ -39,7 +39,7 @@ BEGIN {
     styles["github", "environment", "from"] = "^(\\S+)(\\s+|$)"
     styles["github", "environment", "to"] = "**\\1**: "
     
-    styles["github", "param", "from"] = "^(\\S+)\\s+(\\S+)\\s*\\[(\\S*)]"
+    styles["github", "param", "from"] = "^(\\S+)\\s+(\\S+)\\s*\\[([^\\]]*)]"
     styles["github", "param", "to"] = "**\\1** (\\2)[default: **\\3**]:"
     
     styles["github", "argN", "from"] = "^(\\$[0-9]) (\\S+)"
