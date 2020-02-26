@@ -75,6 +75,7 @@ function reset() {
     has_args = 0
     has_exitcode = 0
     has_stdout = 0
+    has_stderr = 0
 }
 
 /^[[:space:]]*# @show-internal/ {
@@ -249,6 +250,15 @@ in_example {
     sub(/^[[:space:]]*# @stdout /, "")
 
     docblock = docblock "\n" render("h4", "Output on stdout")
+    docblock = docblock "\n\n" render("li", $0) "\n"
+}
+
+/^[[:space:]]*# @stderr/ {
+    has_stderr = 1
+
+    sub(/^[[:space:]]*# @stderr /, "")
+
+    docblock = docblock "\n" render("h4", "Output on stderr")
     docblock = docblock "\n\n" render("li", $0) "\n"
 }
 

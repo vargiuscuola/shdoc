@@ -50,6 +50,7 @@ shdoc will match comments in the following form before function definitions:
 # @exitcode 5  On some error.
 #
 # @stdout Path to something.
+# @stderr Error messages.
 #
 # @see some:other:func()
 some:first:func() {
@@ -92,6 +93,10 @@ _Function has no arguments._
 ### Output on stdout
 
 * Path to something.
+
+### Output on stderr
+
+* Error messages.
 
 #### See also
 
