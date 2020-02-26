@@ -27,7 +27,7 @@ Small description of the script.
 ## Environments Variables
 
 ### Optional Environment Variables Header
-* **ENV1**: Description
+* **ENV1** (type):  Description
 
 
 ## Functions

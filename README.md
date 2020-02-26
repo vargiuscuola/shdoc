@@ -132,7 +132,7 @@ shdoc will match comments in the following for constant, environment variables a
 # @param param1 string[val1] Description
 
 # @environment-header Optional Environment Variables Header
-# @environment ENV1 Description
+# @environment ENV1 type Description
 ```
 
 The above definition will produce following output:
@@ -157,7 +157,7 @@ The above definition will produce following output:
 ## Environments Variables
 
 ### Optional Environment Variables Header
-* **ENV1**: Description
+* **ENV1** (type): Description
 ````
 
 
