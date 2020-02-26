@@ -67,7 +67,7 @@ _Function has no arguments._
 
 * Error messages.
 
-#### Return with global $__ or $_<MODULE>__
+#### Return with global $__ or $_\<MODULE\>__
 
 * Path to something.
 

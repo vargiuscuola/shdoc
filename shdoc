@@ -226,7 +226,7 @@ in_example {
     if (!has_return) {
         has_return = 1
 
-        docblock = docblock "\n" render("h4", "Return with global $__ or $_<MODULE>__") "\n\n"
+        docblock = docblock "\n" render("h4", "Return with global $__ or $_\\<MODULE\\>__") "\n\n"
     }
 
     sub(/^[[:space:]]*# @return /, "")
