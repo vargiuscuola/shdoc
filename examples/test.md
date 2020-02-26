@@ -55,11 +55,19 @@ _Function has no arguments._
 
 #### Exit codes
 
-* **0**:  If successfull.
-* **>0**: On failure
-* **5**:  On some error.
+* 0  If successfull.
+* >0 On failure
+* 5  On some error.
 
 #### Output on stdout
+
+* Path to something.
+
+#### Output on stderr
+
+* Error messages.
+
+#### Return with global $__ or $_<MODULE>__
 
 * Path to something.
 
@@ -94,9 +102,9 @@ _Function has no arguments._
 
 #### Exit codes
 
-* **0**:  If successfull.
-* **>0**: On failure
-* **5**:  On some error.
+* 0  If successfull.
+* >0 On failure
+* 5  On some error.
 
 #### Output on stdout
 

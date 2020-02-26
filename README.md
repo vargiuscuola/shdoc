@@ -52,6 +52,8 @@ shdoc will match comments in the following form before function definitions:
 # @stdout Path to something.
 # @stderr Error messages.
 #
+# @return Path to something.
+#
 # @see some:other:func()
 some:first:func() {
 ```
@@ -97,6 +99,10 @@ _Function has no arguments._
 ### Output on stderr
 
 * Error messages.
+
+### Return with global $__ or $_<MODULE>__
+
+* Path to something.
 
 #### See also
 

@@ -78,6 +78,9 @@ echo "ok"
 # @exitcode 5  On some error.
 #
 # @stdout Path to something.
+# @stderr Error messages.
+#
+# @return Path to something.
 #
 # @see some:other:func()
 some:first:func() {
