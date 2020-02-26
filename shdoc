@@ -2,6 +2,8 @@
 
 BEGIN {
     doc_constants = ""
+    doc_params = ""
+    doc_environment = ""
     internal_functions = ""
     is_show_internal = 0
     toc_internals = "## Internal Functions\n"
@@ -33,6 +35,9 @@ BEGIN {
 
     styles["github", "const", "from"] = "^(\\S+)(\\s+|$)"
     styles["github", "const", "to"] = "**\\1**: "
+    
+    styles["github", "environment", "from"] = "^(\\S+)(\\s+|$)"
+    styles["github", "environment", "to"] = "**\\1**: "
     
     styles["github", "param", "from"] = "^(\\S+)\\s+(\\S+)\\s*\\[(\\S*)]"
     styles["github", "param", "to"] = "**\\1** (\\2)[default: **\\3**]:"
@@ -148,6 +153,27 @@ in_example {
     docblock = docblock render("li", $0) "\n"
 }
 
+/^[[:space:]]*# @environment-header/ {
+    if (doc_environment == "") {
+        doc_environment = render("h2", "Environments Variables") "\n\n"
+    }
+    sub(/^[[:space:]]*# @environment-header /, "")
+
+    doc_environment = doc_environment render("h3", $0) "\n"
+}
+
+/^[[:space:]]*# @environment/ {
+    if (doc_environment == "") {
+        doc_environment = render("h2", "Environments Variables") "\n\n"
+    }
+
+    sub(/^[[:space:]]*# @environment /, "")
+
+    $0 = render("environment", $0)
+
+    doc_environment = doc_environment render("li", $0) "\n"
+}
+
 /^[[:space:]]*# @param-header/ {
     if (doc_params == "") {
         doc_params = render("h2", "Parameters") "\n\n"
@@ -261,6 +287,9 @@ END {
     }
     if (doc_params != "") {
         print doc_params "\n"
+    }
+    if (doc_environment != "") {
+        print doc_environment "\n"
     }
     print toc
     print ""

@@ -104,8 +104,8 @@ functions hidden from users.
 
 If you want to generate documentation also for internal functions, you can use the directive `# @show-internal` anywhere in the file, probably better at the top of the file.
 
-## Constant and parameters tags
-shdoc will match comments in the following for constant and parameters definitions:
+## Constants, Environment Variables and Parameters
+shdoc will match comments in the following for constant, environment variables and parameters definitions:
 ```sh
 # @constant-header Terminal color codes
 # @constant Color_Off                                       Disable color
@@ -117,6 +117,9 @@ shdoc will match comments in the following for constant and parameters definitio
 
 # @param-header General Parameters
 # @param param1 string[val1] Description
+
+# @environment-header Optional Environment Variables Header
+# @environment ENV1 Description
 ```
 
 The above definition will produce following output:
@@ -136,6 +139,12 @@ The above definition will produce following output:
 
 ### General Parameters
 * **param1** (string)[default: **val1**]: Description
+
+
+## Environments Variables
+
+### Optional Environment Variables Header
+* **ENV1**: Description
 ````
 
 

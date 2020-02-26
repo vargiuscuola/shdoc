@@ -24,6 +24,12 @@ Small description of the script.
 * **param1** (string)[default: **val1**]: Description
 
 
+## Environments Variables
+
+### Optional Environment Variables Header
+* **ENV1**: Description
+
+
 ## Functions
 * [some:first:func()](#somefirstfunc)
 
