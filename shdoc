@@ -271,8 +271,9 @@ in_example {
     url = func_name
     if (style == "github") {
         # https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/toc_filter.rb#L44-L45
+        #vs: added underscore
         url = tolower(url)
-        gsub(/[^[:alnum:] -]/, "", url)
+        gsub(/[^[:alnum:] _-]/, "", url)
         gsub(/ /, "-", url)
     }
     if (is_internal) {
