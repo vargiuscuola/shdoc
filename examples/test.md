@@ -96,6 +96,7 @@ echo 123
 #### Arguments
 
 * **$1** (string): Some arg.
+* **$2** (number)[default: **15**]: Some other arg.
 * **...** (any): Rest of arguments.
 
 _Function has no arguments._

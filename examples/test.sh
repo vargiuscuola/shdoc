@@ -46,6 +46,7 @@ On_IBlack='\e[0;100m' On_IRed='\e[0;101m' On_IGreen='\e[0;102m' On_IYellow='\e[0
 #   echo 123
 #
 # @arg $1 string Some arg.
+# @arg $2 number[15] Some other arg.
 # @arg $@ any Rest of arguments.
 #
 # @noargs

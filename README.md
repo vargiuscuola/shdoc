@@ -41,6 +41,7 @@ shdoc will match comments in the following form before function definitions:
 #   echo 123
 #
 # @arg $1 string Some arg.
+# @arg $2 number[15] Some other arg.
 # @arg $@ any Rest of arguments.
 #
 # @noargs
@@ -83,6 +84,7 @@ echo 123
 ### Arguments
 
 * **$1** (string): Some arg.
+* **$2** (number)[default: **15**]: Some other arg.
 * **...** (any): Rest of arguments.
 
 _Function has no arguments._

@@ -44,6 +44,9 @@ BEGIN {
     
     styles["github", "argN", "from"] = "^(\\$[0-9]) (\\S+)"
     styles["github", "argN", "to"] = "**\\1** (\\2):"
+    
+    styles["github", "argNwDefault", "from"] = "^(\\$[0-9]) (\\S+)\\[([^\\]]*)]"
+    styles["github", "argNwDefault", "to"] = "**\\1** (\\2)[default: **\\3**]:"
 
     styles["github", "arg@", "from"] = "^\\$@ (\\S+)"
     styles["github", "arg@", "to"] = "**...** (\\1):"
@@ -149,6 +152,7 @@ in_example {
 
     sub(/^[[:space:]]*# @arg /, "")
 
+    $0 = render("argNwDefault", $0)
     $0 = render("argN", $0)
     $0 = render("arg@", $0)
 
