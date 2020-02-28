@@ -2,15 +2,15 @@
 
 Converts comments to function to reference markdown documentation.
 This is a modified version of [reconquest/shdoc](https://github.com/reconquest/shdoc) with the following additions:
-* added support for defining params, environment variables and constants
-* added default value for params and arguments
-* optionally show internal functions documentation through the use of the `@show-internal` directive
-* escape markdown characters in non descriptive elements (variable names and exit codes)  
+* Added support for defining params, environment variables and constants
+* Added default value for params and arguments
+* Optionally show internal functions documentation through the use of the `@show-internal` directive
+* Escape markdown characters in non descriptive elements (variable names and exit codes)  
   This allows to correctly render the following example:
   ```console
   # @exitcode >0 On failure
   ```
-* added support for a `@return` tag which specify an optional return value from a function stored in a global variable as $__ or $_<MODULE>__ (which I use often to avoid running a subshell as in `ret=$(func)`)
+* Added support for a `@return` tag which specify an optional return value from a function stored in a global variable as $__ or $_<MODULE>__ (which I use often to avoid running a subshell as in `ret=$(func)`)
 
 # Usage
 
@@ -181,7 +181,7 @@ The above definition will produce following output:
 Note that non descriptive parts of tags are escaped to allow them to be reported literally and not be interpreted by the markdown parser.
 Specifically, are escaped the following elements:
 * the first element of tags `@const`, `@environment`, `@param` and `@exitcode` (i.e. the variable name or exit code value)
-* the third element of tags `param` and `argNwDefault` (i.e. the default value)
+* the third element of tags `@param` and `@arg` (i.e. the default value)
 
 The characters escaped are `<>*#[]` and `_` only at the beginning or end of the value.
 

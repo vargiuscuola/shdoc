@@ -105,7 +105,7 @@ _Function has no arguments._
 #### Exit codes
 
 * **0**:  If successfull.
-* **\\>0**: On failure
+* **\>0**: On failure
 * **5**:  On some error.
 * Standard exit codes (alternative to @exitcode)
 
