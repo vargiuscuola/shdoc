@@ -21,13 +21,14 @@ Small description of the script.
 ## Parameters
 
 ### General Parameters
-* **param1** (string)[default: **val1**]: Description
+* **\_MAIN__PARAM1_\<scriptname\>** (string)[default: **\<pid of process\>**]: pid of process \<scriptname\>
 
 
 ## Environments Variables
 
 ### Optional Environment Variables Header
-* **ENV1** (type):  Description
+* **ENV1** (type): Description
+* **\_TRAP__SIGNAL_HOOKS_\<signal\>** (Array): List of hooks for signal \<signal\>
 
 
 ## Functions
