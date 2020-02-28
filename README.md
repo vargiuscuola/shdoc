@@ -47,7 +47,7 @@ shdoc will match comments in the following form before function definitions:
 # @noargs
 #
 # @exitcode 0  If successfull.
-# @exitcode \>0 On failure
+# @exitcode >0 On failure
 # @exitcode 5  On some error.
 # @exitcodes Standard exit codes (alternative to @exitcode)
 #
@@ -132,9 +132,11 @@ shdoc will match comments in the following for constant, environment variables a
 
 # @param-header General Parameters
 # @param param1 string[val1] Description
+# @param _MAIN__PARAM2_<scriptname> string[<pid of process>] Pid of process \<scriptname\>
 
 # @environment-header Optional Environment Variables Header
 # @environment ENV1 type Description
+# @environment _TRAP__SIGNAL_HOOKS_<signal> Array List of hooks for signal \<signal\>
 ```
 
 The above definition will produce following output:
@@ -154,13 +156,20 @@ The above definition will produce following output:
 
 ### General Parameters
 * **param1** (string)[default: **val1**]: Description
+* **\_MAIN__PARAM1_\<scriptname\>** (string)[default: **\<pid of process\>**]: pid of process \<scriptname\>
 
 
 ## Environments Variables
 
 ### Optional Environment Variables Header
 * **ENV1** (type): Description
+* **\_TRAP__SIGNAL_HOOKS_\<signal\>** (Array): List of hooks for signal \<signal\>
 ````
+
+## Automatic markdown specific characters escaping
+
+Note that non descriptive parts of tags are escaped to allow them to be reported literally and not be interpreted by the markdown parser.
+Specifically 
 
 
 

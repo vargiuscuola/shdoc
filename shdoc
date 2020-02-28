@@ -67,14 +67,14 @@ BEGIN {
 	
 	###########
 	### MARKDOWN ESCAPES
-	escapes["github", "from"] = "(^_|_$|<|>)"
+	escapes["github", "from"] = "(^_|_$|<|>|*|#|\\[|\\])"
 	escapes["github", "to"] = "\\1"
 }
 
 function render(type, text) {
 	from = styles["github", type, "from"]
 	to = styles["github", type, "to"]
-	if (type == "const" || type == "environment" || type == "param" || type == "argNwDefault") {
+	if (type == "const" || type == "environment" || type == "param" || type == "exitcode" || type == "argNwDefault") {
 		match(text, from, ary)
 		
 		if (type != "argNwDefault") {
@@ -85,11 +85,13 @@ function render(type, text) {
 			to = gensub("\\\\1", to_escape, 1, to)
 		}
 		
-		# third parameter
-		to_escape = gensub("\\\\", "\\\\\\\\\\\\", "g", escapes["github", "to"])
-		escaped_str = gensub(escapes["github", "from"], to_escape, "g", ary[3])
-		to_escape = gensub("\\\\", "\\\\\\\\\\\\\\\\", "g", escaped_str)
-		to = gensub("\\\\3", to_escape, 1, to)
+		if (type == "param" || type == "argNwDefault") {
+			# third parameter
+			to_escape = gensub("\\\\", "\\\\\\\\\\\\", "g", escapes["github", "to"])
+			escaped_str = gensub(escapes["github", "from"], to_escape, "g", ary[3])
+			to_escape = gensub("\\\\", "\\\\\\\\\\\\\\\\", "g", escaped_str)
+			to = gensub("\\\\3", to_escape, 1, to)
+		}
 	}
 	
     return gensub( \
@@ -261,6 +263,7 @@ in_example {
     }
 
     sub(/^[[:space:]]*# @exitcodes /, "")
+	
 
     docblock = docblock render("li", $0) "\n"
 }

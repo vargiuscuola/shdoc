@@ -19,7 +19,7 @@
 # @constant False False Value (1)
 
 # @param-header General Parameters
-# @param _MAIN__PARAM1_<scriptname> string[<pid of process>] pid of process \<scriptname\>
+# @param _MAIN__PARAM1_*#[]<scriptname> string[<pid of process>] pid of process \<scriptname\>
 
 # @environment-header Optional Environment Variables Header
 # @environment ENV1 type Description
@@ -77,7 +77,7 @@ echo "ok"
 # @noargs
 #
 # @exitcode 0  If successfull.
-# @exitcode \>0 On failure
+# @exitcode >0 On failure
 # @exitcode 5  On some error.
 #
 # @stdout Path to something.

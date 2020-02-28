@@ -21,7 +21,7 @@ Small description of the script.
 ## Parameters
 
 ### General Parameters
-* **\_MAIN__PARAM1_\<scriptname\>** (string)[default: **\<pid of process\>**]: pid of process \<scriptname\>
+* **\_MAIN__PARAM1_\*\#\[\]\<scriptname\>** (string)[default: **\<pid of process\>**]: pid of process \<scriptname\>
 
 
 ## Environments Variables
@@ -105,7 +105,7 @@ _Function has no arguments._
 #### Exit codes
 
 * **0**:  If successfull.
-* **\>0**: On failure
+* **\\>0**: On failure
 * **5**:  On some error.
 * Standard exit codes (alternative to @exitcode)
 
