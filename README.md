@@ -113,7 +113,7 @@ _Function has no arguments._
 * [some:other:func()](#some:other:func())
 ````
 
-When you want to skip documentation generation for particular function, use `@internal` tag.
+When you want to skip documentation generation for particular function, use `@internal` tag in the line before the `@description` tag.
 It allows you to have the same style of doc comments across the script and keep internal
 functions hidden from users.
 

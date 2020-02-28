@@ -19,10 +19,11 @@
 # @constant False False Value (1)
 
 # @param-header General Parameters
-# @param param1 string[val1] Description
+# @param _MAIN__PARAM1_<scriptname> string[<pid of process>] pid of process \<scriptname\>
 
 # @environment-header Optional Environment Variables Header
 # @environment ENV1 type Description
+# @environment _TRAP__SIGNAL_HOOKS_<signal> Array List of hooks for signal \<signal\>
 
 # Bold
 BBlack='\e[1;30m' BRed='\e[1;31m' BGreen='\e[1;32m' BYellow='\e[1;33m' BBlue='\e[1;34m' BPurple='\e[1;35m' BCyan='\e[1;36m' BWhite='\e[1;37m'
