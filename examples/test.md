@@ -32,10 +32,10 @@ Small description of the script.
 
 
 ## Functions
-* [some:first:func()](#somefirstfunc)
+* [first:func()](#firstfunc)
 
 
-### some:first:func()
+### first:func()
 
 Multiline description goes here and
 there
@@ -43,7 +43,7 @@ there
 #### Example
 
 ```bash
-some:other:func a b c
+first:func a b c
 echo 123
 ```
 
@@ -90,7 +90,7 @@ there
 #### Example
 
 ```bash
-some:other:func a b c
+some:internal:func a b c
 echo 123
 ```
 
