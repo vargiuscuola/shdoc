@@ -21,7 +21,7 @@ Small description of the script.
 ## Parameters
 
 ### General Parameters
-* **\_MAIN__PARAM1_\*\#\[\]\<scriptname\>** (string)[default: **\<pid of process\>**]: pid of process \<scriptname\>
+* **\_MAIN__PARAM1_\<scriptname\>** (string)[default: **\<pid of process\>**]: pid of process \<scriptname\>
 
 
 ## Environments Variables
