@@ -11,7 +11,7 @@ This is a modified version of [reconquest/shdoc](https://github.com/reconquest/s
   ```console
   # @exitcode >0 On failure
   ```
-* Added support for a `@return` tag which specify an optional return value from a function stored in a global variable as $__ or $_\<MODULE\>__ (which I use often to avoid running a subshell as in `ret=$(func)`)
+* Added support for a `@return` tag which specify an optional return value from a function stored in a global variable as $__ or $_\<MODULE\>__ (which can be used to avoid running a subshell as in `ret=$(func)`)
 
 # Usage
 
@@ -136,7 +136,7 @@ When you want to skip documentation generation for particular function, use `@in
 It allows you to have the same style of doc comments across the script and keep internal
 functions hidden from users.
 
-If you want to generate documentation also for internal functions, you can use the directive `# @show-internal` anywhere in the file, probably better at the top of the file.
+If you want to generate documentation also for internal functions, you can use the directive `@show-internal` anywhere in the file, probably better at the top of the file.
 
 ## Constants, Global Variables and Settings
 shdoc will match comments in the following for constant, global variables and settings definitions:
