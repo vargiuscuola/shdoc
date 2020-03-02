@@ -42,8 +42,8 @@ On_IBlack='\e[0;100m' On_IRed='\e[0;101m' On_IGreen='\e[0;102m' On_IYellow='\e[0
 # there
 #
 # @example
-#   first:func a b c
-#   echo 123
+#   module_fun a b c
+#   => a b c
 #
 # @arg $1 string Some arg.
 # @arg $@ any Rest of arguments.

@@ -43,8 +43,8 @@ there
 #### Example
 
 ```bash
-first:func a b c
-echo 123
+module_fun a b c
+=> a b c
 ```
 
 #### Arguments
