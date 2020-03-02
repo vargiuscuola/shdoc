@@ -11,7 +11,7 @@ This is a modified version of [reconquest/shdoc](https://github.com/reconquest/s
   ```console
   # @exitcode >0 On failure
   ```
-* Added support for a `@return` tag which specify an optional return value from a function stored in a global variable as $__ or $_<MODULE>__ (which I use often to avoid running a subshell as in `ret=$(func)`)
+* Added support for a `@return` tag which specify an optional return value from a function stored in a global variable as $__ or $_\<MODULE\>__ (which I use often to avoid running a subshell as in `ret=$(func)`)
 
 # Usage
 
