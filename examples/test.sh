@@ -18,12 +18,12 @@
 # @constant True True Value (0)
 # @constant False False Value (1)
 
-# @param-header General Parameters
-# @param _MAIN__PARAM1_<scriptname> string[<pid of process>] pid of process \<scriptname\>
+# @setting-header General Settings
+# @setting _MAIN__SETTING1_<scriptname> string[<pid of process>] pid of process \<scriptname\>
 
-# @environment-header Optional Environment Variables Header
-# @environment ENV1 type Description
-# @environment _TRAP__SIGNAL_HOOKS_<signal> Array List of hooks for signal \<signal\>
+# @global-header Optional Global Variables Header
+# @global ENV1 type Description
+# @global _TRAP__SIGNAL_HOOKS_<signal> Array List of hooks for signal \<signal\>
 
 # Bold
 BBlack='\e[1;30m' BRed='\e[1;31m' BGreen='\e[1;32m' BYellow='\e[1;33m' BBlue='\e[1;34m' BPurple='\e[1;35m' BCyan='\e[1;36m' BWhite='\e[1;37m'
@@ -54,13 +54,16 @@ On_IBlack='\e[0;100m' On_IRed='\e[0;101m' On_IGreen='\e[0;102m' On_IYellow='\e[0
 # @exitcode >0 On failure
 # @exitcode 5  On some error.
 #
+# @alias module.func
+# @alias module.func-alt
+#
 # @stdout Path to something.
 # @stderr Error messages.
 #
 # @return Path to something.
 #
 # @see some:other:func()
-first:func() {
+module_func() {
 echo "ok"
 }
 
@@ -69,8 +72,7 @@ echo "ok"
 # there
 #
 # @example
-#   some:internal:func a b c
-#   echo 123
+#   module_func2 a b c
 #
 # @arg $1 string Some arg.
 # @arg $2 number[15] Some other arg.
@@ -84,9 +86,7 @@ echo "ok"
 # @exitcodes Standard exit codes (alternative to @exitcode)
 #
 # @stdout Path to something.
-#
-# @see some:other:func()
-some:internal:func() {
+module_func2() {
 echo "ok"
 }
 

@@ -18,24 +18,24 @@ Small description of the script.
 * **False**: False Value (1)
 
 
-## Parameters
+## Settings
 
-### General Parameters
-* **\_MAIN__PARAM1_\<scriptname\>** (string)[default: **\<pid of process\>**]: pid of process \<scriptname\>
+### General Settings
+* **\_MAIN__SETTING1_\<scriptname\>** (string)[default: **\<pid of process\>**]: pid of process \<scriptname\>
 
 
-## Environments Variables
+## Global Variables
 
-### Optional Environment Variables Header
+### Optional Global Variables Header
 * **ENV1** (type): Description
 * **\_TRAP__SIGNAL_HOOKS_\<signal\>** (Array): List of hooks for signal \<signal\>
 
 
 ## Functions
-* [first:func()](#firstfunc)
+* [module_func()](#module_func)
 
 
-### first:func()
+### module_func()
 
 Multiline description goes here and
 there
@@ -60,6 +60,11 @@ _Function has no arguments._
 * **\>0**: On failure
 * **5**:  On some error.
 
+#### Aliases
+
+* **module.func**
+* **module.func-alt**
+
 #### Output on stdout
 
 * Path to something.
@@ -79,10 +84,10 @@ _Function has no arguments._
 
 
 ## Internal Functions
-* [some:internal:func()](#someinternalfunc)
+* [module_func2()](#module_func2)
 
 
-### some:internal:func()
+### module_func2()
 
 Multiline description goes here and
 there
@@ -90,8 +95,7 @@ there
 #### Example
 
 ```bash
-some:internal:func a b c
-echo 123
+module_func2 a b c
 ```
 
 #### Arguments
@@ -112,9 +116,5 @@ _Function has no arguments._
 #### Output on stdout
 
 * Path to something.
-
-#### See also
-
-* [some:other:func()](#some:other:func())
 
 
