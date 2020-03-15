@@ -73,7 +73,7 @@ _Function has no arguments._
 
 * Error messages.
 
-#### Return with global $__ or $_\<MODULE\>__
+#### Return with global scalar $__, array $__a or hash $__h
 
 * Path to something.
 
