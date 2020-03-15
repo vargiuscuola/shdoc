@@ -110,7 +110,7 @@ _Function has no arguments._
 * **5**:  On some error.
 * Standard exit codes (alternative to @exitcode)
 
-#### Aliases
+### Aliases
 
 * **module.func**
 * **module.func-alt**
@@ -161,26 +161,26 @@ shdoc will match comments in the following for constant, global variables and se
 The above definition will produce following output:
 
 ````markdown
-## Constants
+# Constants
 
-### Terminal color codes
+## Terminal color codes
 * **Color_Off**: Disable color
 * **Black,Red,Green,Yellow,Blue,Purple,Cyan,Orange**: Regular Colors
-### Others
+## Others
 * **True**: True Value (0)
 * **False**: False Value (1)
 
 
-## Settings
+# Settings
 
-### General Settings
+## General Settings
 * **setting1** (string)[default: **val1**]: Description
 * **\_MAIN__SETTING1_\<scriptname\>** (string)[default: **\<pid of process\>**]: pid of process \<scriptname\>
 
 
-## Global Variables
+# Global Variables
 
-### Optional Global Variables Header
+## Optional Global Variables Header
 * **GLOBALVAR1** (type): Description
 * **\_TRAP__SIGNAL_HOOKS_\<signal\>** (Array): List of hooks for signal \<signal\>
 ````

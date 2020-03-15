@@ -2,9 +2,9 @@
 
 Small description of the script.
 
-## Constants
+# Constants
 
-### Terminal color codes
+## Terminal color codes
 * **Color_Off**: Disable color
 * **Black,Red,Green,Yellow,Blue,Purple,Cyan,Orange**: Regular Colors
 * **BBlack,BRed,BGreen,BYellow,BBlue,BPurple,BCyan,BWhite**: Bold Colors
@@ -13,67 +13,67 @@ Small description of the script.
 * **BIBlack,BIRed,BIGreen,BIYellow,BIBlue,BIPurple,BICyan,BIWhite**: Bold High Intensty Colors
 * **On_Black,On_Red,On_Green,On_Yellow,On_Blue,On_Purple,On_Cyan,On_White**: Background Colors
 * **On_IBlack,On_IRed,On_IGreen,On_IYellow,On_IBlue,On_IPurple,On_ICyan,On_IWhite**: High Intensty Background Colors
-### Others
+## Others
 * **True**: True Value (0)
 * **False**: False Value (1)
 
 
-## Settings
+# Settings
 
-### General Settings
+## General Settings
 * **\_MAIN__SETTING1_\<scriptname\>** (string)[default: **\<pid of process\>**]: pid of process \<scriptname\>
 
 
-## Global Variables
+# Global Variables
 
-### Optional Global Variables Header
+## Optional Global Variables Header
 * **ENV1** (type): Description
 * **\_TRAP__SIGNAL_HOOKS_\<signal\>** (Array): List of hooks for signal \<signal\>
 
 
-## Functions
+# Functions
 * [module_func()](#module_func)
 
 
-### module_func()
+## module_func()
 
 Multiline description goes here and
 there
 
-#### Example
+### Example
 
 ```bash
 module_fun a b c
 => a b c
 ```
 
-#### Arguments
+### Arguments
 
 * **$1** (string): Some arg.
 * **...** (any): Rest of arguments.
 
 _Function has no arguments._
 
-#### Exit codes
+### Exit codes
 
 * **0**:  If successfull.
 * **\>0**: On failure
 * **5**:  On some error.
 
-#### Aliases
+### Aliases
 
 * **module.func**
 * **module.func-alt**
 
-#### Output on stdout
+### Output on stdout
 
 * Path to something.
 
-#### Output on stderr
+### Output on stderr
 
 * Error messages.
 
-#### Return with global scalar $__, array $__a or hash $__h
+### Return with global scalar $__, array $__a or hash $__h
 
 * Path to something.
 
@@ -83,22 +83,22 @@ _Function has no arguments._
 
 
 
-## Internal Functions
+# Internal Functions
 * [module_func2()](#module_func2)
 
 
-### module_func2()
+## module_func2()
 
 Multiline description goes here and
 there
 
-#### Example
+### Example
 
 ```bash
 module_func2 a b c
 ```
 
-#### Arguments
+### Arguments
 
 * **$1** (string): Some arg.
 * **$2** (number)[default: **15**]: Some other arg.
@@ -106,14 +106,14 @@ module_func2 a b c
 
 _Function has no arguments._
 
-#### Exit codes
+### Exit codes
 
 * **0**:  If successfull.
 * **\>0**: On failure
 * **5**:  On some error.
 * Standard exit codes (alternative to @exitcode)
 
-#### Output on stdout
+### Output on stdout
 
 * Path to something.
 
