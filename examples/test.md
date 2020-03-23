@@ -54,6 +54,11 @@ module_fun a b c
 
 _Function has no arguments._
 
+### Options
+
+* **--opt1**: Description for option n. 1
+* **--opt2**: Description for option n. 2
+
 ### Exit codes
 
 * **0**:  If successfull.

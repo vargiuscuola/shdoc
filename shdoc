@@ -44,7 +44,10 @@ BEGIN {
     styles["github", "setting", "from"] = "^(\\S+)\\s+(\\S+)\\s*\\[([^\\]]*)]"
     styles["github", "setting", "to"] = "**\\1** (\\2)[default: **\\3**]:"
     
-    styles["github", "argN", "from"] = "^(\\$[0-9]) (\\S+)"
+    styles["github", "opt", "from"] = "^(\\S+)\\s+"
+    styles["github", "opt", "to"] = "**\\1**: "
+    
+	styles["github", "argN", "from"] = "^(\\$[0-9]) (\\S+)"
     styles["github", "argN", "to"] = "**\\1** (\\2):"
     
     styles["github", "argNwDefault", "from"] = "^(\\$[0-9]) (\\S+)\\[([^\\]]*)]"
@@ -108,6 +111,7 @@ function render(type, text) {
 function reset() {
     has_example = 0
     has_args = 0
+    has_opts = 0
     has_exitcode = 0
     has_alias = 0
     has_stdout = 0
@@ -188,6 +192,20 @@ in_example {
     $0 = render("argNwDefault", $0)
     $0 = render("argN", $0)
     $0 = render("arg@", $0)
+
+    docblock = docblock render("li", $0) "\n"
+}
+
+/^[[:space:]]*# @opt/ {
+    if (!has_opts) {
+        has_opts = 1
+
+        docblock = docblock "\n" render("h3", "Options") "\n\n"
+    }
+
+    sub(/^[[:space:]]*# @opt /, "")
+
+    $0 = render("opt", $0)
 
     docblock = docblock render("li", $0) "\n"
 }

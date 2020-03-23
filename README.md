@@ -4,6 +4,7 @@ Converts comments to function to reference markdown documentation.
 This is a modified version of [reconquest/shdoc](https://github.com/reconquest/shdoc) with the following additions:
 * Added support for defining settings, global variables and constants
 * Added support for aliases to functions
+* Added support for options in functions
 * Added default value for settings and arguments
 * Optionally show internal functions documentation through the use of the `@show-internal` directive
 * Escape markdown characters in non descriptive elements (variable names and exit codes)  
@@ -57,6 +58,9 @@ shdoc will match comments in the following form before function definitions:
 #
 # @noargs
 #
+# @opt --opt1 Description for option n. 1
+# @opt --opt2 Description for option n. 2
+#
 # @exitcode 0  If successfull.
 # @exitcode >0 On failure
 # @exitcode 5  On some error.
@@ -102,6 +106,11 @@ module.func a b c
 * **...** (any): Rest of arguments.
 
 _Function has no arguments._
+
+### Options
+
+* **--opt1**: Description for option n. 1
+* **--opt2**: Description for option n. 2
 
 ### Exit codes
 
