@@ -79,9 +79,9 @@ module_func() {
 ```
 
 `shdoc.awk` has no args and expects shell script with comments as described
-above on the stdin and will markdown output result on the stdout.
+above on the stdin and will print the markdown documentation on stdout.
 
-Will produce following output:
+The above example produce the following output:
 ````markdown
 
 * [some:first:func()](#somefirstfunc)
@@ -143,7 +143,7 @@ _Function has no arguments._
 
 When you want to skip documentation generation for particular function, use `@internal` tag in the line before the `@description` tag.
 It allows you to have the same style of doc comments across the script and keep internal
-functions hidden from users.
+functions hidden.
 
 If you want to generate documentation also for internal functions, you can use the directive `@show-internal` anywhere in the file, probably better at the top of the file.
 
