@@ -32,7 +32,7 @@ shdoc will match comments in the following form on top of a script file:
 # @brief Small description of the script.
 ```
 
-Will produce following output:
+Will produce the following output:
 
 ```markdown
 # Title of file script
