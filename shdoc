@@ -355,7 +355,7 @@ in_example {
     docblock = docblock "\n\n" render("li", $0) "\n"
 }
 
-/^[ \t]*(function([ \t])+)?([a-zA-Z0-9_:-]+)([ \t]*)(\(([ \t]*)\))?[ \t]*\{/ && docblock != "" {
+/^[ \t]*(function([ \t])+)?([a-zA-Z0-9_:-]+)([ \t]*)(\(([ \t]*)\))?[ \t]*\{/ && docblock != "" && !in_example {
     in_function = 1
     func_name = gensub(\
         /^[ \t]*(function([ \t])+)?([a-zA-Z0-9_:-]+)[ \t]*\(.*/, \
@@ -382,7 +382,6 @@ in_example {
     docblock = ""
     reset()
 }
-
 
 #########
 #
