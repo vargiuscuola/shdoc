@@ -8,7 +8,11 @@ BEGIN {
     is_show_internal = 0
     toc_internals = "# Internal Functions\n"
     toc = "# Functions\n"
-    
+    description = ""
+    file_description = ""
+    was_file_description = 0
+    in_function = 0
+
     if (! style) {
         style = "github"
     }
@@ -119,12 +123,12 @@ function reset() {
     has_return = 0
 }
 
+#########
+#
+# File directives
+# 
 /^[[:space:]]*# @show-internal/ {
     is_show_internal = 1
-}
-
-/^[[:space:]]*# @internal/ {
-    is_internal = 1
 }
 
 /^[[:space:]]*# @file/ {
@@ -135,79 +139,6 @@ function reset() {
 /^[[:space:]]*# @brief/ {
     sub(/^[[:space:]]*# @brief /, "")
     filedoc = filedoc "\n" $0
-}
-
-/^[[:space:]]*# @description/ {
-    in_description = 1
-    in_example = 0
-
-    reset()
-
-    docblock = ""
-}
-
-in_description {
-    if (/^[^[[:space:]]*#]|^[[:space:]]*# @[^d]|^[[:space:]]*[^#]/) {
-        if (!match(docblock, /\n$/)) {
-            docblock = docblock "\n"
-        }
-        in_description = 0
-    } else {
-        sub(/^[[:space:]]*# @description /, "")
-        sub(/^[[:space:]]*# /, "")
-        sub(/^[[:space:]]*#$/, "")
-
-        docblock = docblock "\n" $0
-    }
-}
-
-in_example {
-    if (! /^[[:space:]]*#[ ]{3}/) {
-        in_example = 0
-
-        docblock = docblock "\n" render("/code") "\n"
-    } else {
-        sub(/^[[:space:]]*#[ ]{3}/, "")
-
-        docblock = docblock "\n" $0
-    }
-}
-
-/^[[:space:]]*# @example/ {
-    in_example = 1
-
-    docblock = docblock "\n" render("h3", "Example")
-    docblock = docblock "\n\n" render("code", "bash")
-}
-
-/^[[:space:]]*# @arg/ {
-    if (!has_args) {
-        has_args = 1
-
-        docblock = docblock "\n" render("h3", "Arguments") "\n\n"
-    }
-
-    sub(/^[[:space:]]*# @arg /, "")
-
-    $0 = render("argNwDefault", $0)
-    $0 = render("argN", $0)
-    $0 = render("arg@", $0)
-
-    docblock = docblock render("li", $0) "\n"
-}
-
-/^[[:space:]]*# @opt/ {
-    if (!has_opts) {
-        has_opts = 1
-
-        docblock = docblock "\n" render("h3", "Options") "\n\n"
-    }
-
-    sub(/^[[:space:]]*# @opt /, "")
-
-    $0 = render("opt", $0)
-
-    docblock = docblock render("li", $0) "\n"
 }
 
 /^[[:space:]]*# @global-header/ {
@@ -273,11 +204,74 @@ in_example {
     doc_constants = doc_constants render("li", $0) "\n"
 }
 
+#########
+#
+# Function directives
+#
+/^[[:space:]]*# @internal/ {
+    in_function = 1
+    is_internal = 1
+}
+
+in_example {
+    if (! /^[[:space:]]*#[ ]{3}/) {
+        in_example = 0
+
+        docblock = docblock "\n" render("/code") "\n"
+    } else {
+        sub(/^[[:space:]]*#[ ]{3}/, "")
+
+        docblock = docblock "\n" $0
+    }
+}
+
+/^[[:space:]]*# @example/ {
+    in_function = 1
+    in_example = 1
+
+    docblock = docblock "\n" render("h3", "Example")
+    docblock = docblock "\n\n" render("code", "bash")
+}
+
+/^[[:space:]]*# @arg/ {
+    in_function = 1
+    if (!has_args) {
+        has_args = 1
+
+        docblock = docblock "\n" render("h3", "Arguments") "\n\n"
+    }
+
+    sub(/^[[:space:]]*# @arg /, "")
+
+    $0 = render("argNwDefault", $0)
+    $0 = render("argN", $0)
+    $0 = render("arg@", $0)
+
+    docblock = docblock render("li", $0) "\n"
+}
+
+/^[[:space:]]*# @opt/ {
+    in_function = 1
+    if (!has_opts) {
+        has_opts = 1
+
+        docblock = docblock "\n" render("h3", "Options") "\n\n"
+    }
+
+    sub(/^[[:space:]]*# @opt /, "")
+
+    $0 = render("opt", $0)
+
+    docblock = docblock render("li", $0) "\n"
+}
+
 /^[[:space:]]*# @noargs/ {
+    in_function = 1
     docblock = docblock "\n" render("i", "Function has no arguments.") "\n"
 }
 
 /^[[:space:]]*# @exitcodes/ {
+    in_function = 1
     if (!has_exitcode) {
         has_exitcode = 1
 
@@ -291,6 +285,7 @@ in_example {
 }
 
 /^[[:space:]]*# @exitcode/ {
+    in_function = 1
     if (!has_exitcode) {
         has_exitcode = 1
 
@@ -304,6 +299,7 @@ in_example {
 }
 
 /^[[:space:]]*# @alias/ {
+    in_function = 1
     if (!has_alias) {
         has_alias = 1
 
@@ -317,6 +313,7 @@ in_example {
 }
 
 /^[[:space:]]*# @return/ {
+    in_function = 1
     if (!has_return) {
         has_return = 1
 
@@ -329,6 +326,7 @@ in_example {
 }
 
 /^[[:space:]]*# @see/ {
+    in_function = 1
     sub(/[[:space:]]*# @see /, "")
 
     $0 = render("anchor", $0)
@@ -338,6 +336,7 @@ in_example {
 }
 
 /^[[:space:]]*# @stdout/ {
+    in_function = 1
     has_stdout = 1
 
     sub(/^[[:space:]]*# @stdout /, "")
@@ -347,6 +346,7 @@ in_example {
 }
 
 /^[[:space:]]*# @stderr/ {
+    in_function = 1
     has_stderr = 1
 
     sub(/^[[:space:]]*# @stderr /, "")
@@ -356,6 +356,7 @@ in_example {
 }
 
 /^[ \t]*(function([ \t])+)?([a-zA-Z0-9_:-]+)([ \t]*)(\(([ \t]*)\))?[ \t]*\{/ && docblock != "" {
+    in_function = 1
     func_name = gensub(\
         /^[ \t]*(function([ \t])+)?([a-zA-Z0-9_:-]+)[ \t]*\(.*/, \
         "\\3()", \
@@ -382,9 +383,63 @@ in_example {
     reset()
 }
 
+
+#########
+#
+# Common directives
+#
+function handle_description() {
+    # This function is called when @description directive is starting or ending.
+    # We have to decide if the previous @description directive (in case of a starting @description directive) or the just ended @description directive
+    # is a global description or a function's description.
+    # If still a global description was not defined and is starting a new directive or a function directive
+    if ((in_description || !in_function) && !was_file_description) {
+        # If the description is null, probably is starting the first @description directive, so we still doesn't decide and return
+        if (description == "") { return }
+        # otherwise we assign the description to the global description comment
+        was_file_description = 1
+        file_description = render("h1", "Overview") "\n" description
+    } else {
+        # Ff a global description was already defined, or a description is just ended or is starting a new function directive, then we know
+        # the current description is a function description.
+        reset()
+        docblock = description
+    }
+    description = ""
+}
+
+/^[[:space:]]*# @description/ {
+    # started a new description
+    # register we are in description setting `in_description`
+    in_description = 1
+    # and then let `handle_description` if there was a previous description to assign to the file description
+    handle_description()
+}
+
+in_description {
+    if (/^[^[[:space:]]*#]|^[[:space:]]*# @[^d]|^[[:space:]]*[^#]/) {
+        if (!match(description, /\n$/)) {
+            description = description "\n"
+            #docblock = docblock "\n"
+        }
+        in_description = 0
+        handle_description()
+    } else {
+        sub(/^[[:space:]]*# @description /, "")
+        sub(/^[[:space:]]*# /, "")
+        sub(/^[[:space:]]*#$/, "")
+
+        description = description "\n" $0
+        #docblock = docblock "\n" $0
+    }
+}
+
 END {
     if (filedoc != "") {
         print filedoc "\n"
+    }
+    if (file_description != "") {
+        print file_description "\n"
     }
     if (doc_constants != "") {
         print doc_constants "\n"
