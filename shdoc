@@ -355,34 +355,6 @@ in_example {
     docblock = docblock "\n\n" render("li", $0) "\n"
 }
 
-/^[ \t]*(function([ \t])+)?([a-zA-Z0-9_:-]+)([ \t]*)(\(([ \t]*)\))?[ \t]*\{/ && docblock != "" && !in_example {
-    in_function = 1
-    func_name = gensub(\
-        /^[ \t]*(function([ \t])+)?([a-zA-Z0-9_:-]+)[ \t]*\(.*/, \
-        "\\3()", \
-        "g" \
-    )
-    url = func_name
-    if (style == "github") {
-        # https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/toc_filter.rb#L44-L45
-        #vs: added underscore
-        url = tolower(url)
-        gsub(/[^[:alnum:] _-]/, "", url)
-        gsub(/ /, "-", url)
-    }
-    if (is_internal) {
-        is_internal = 0
-        internal_functions = internal_functions render("h2", func_name) "\n" docblock "\n"
-        toc_internals = toc_internals "* [" func_name "](#" url ")" "\n"
-    } else {
-        doc = doc render("h2", func_name) "\n" docblock "\n"
-        toc = toc "* [" func_name "](#" url ")" "\n"
-    }
-
-    docblock = ""
-    reset()
-}
-
 #########
 #
 # Common directives
@@ -431,6 +403,38 @@ in_description {
         description = description "\n" $0
         #docblock = docblock "\n" $0
     }
+}
+
+#########
+#
+# Start of function
+#
+/^[ \t]*(function([ \t])+)?([a-zA-Z0-9_:-]+)([ \t]*)(\(([ \t]*)\))?[ \t]*\{/ && docblock != "" && !in_example {
+    in_function = 1
+    func_name = gensub(\
+        /^[ \t]*(function([ \t])+)?([a-zA-Z0-9_:-]+)[ \t]*\(.*/, \
+        "\\3()", \
+        "g" \
+    )
+    url = func_name
+    if (style == "github") {
+        # https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/toc_filter.rb#L44-L45
+        #vs: added underscore
+        url = tolower(url)
+        gsub(/[^[:alnum:] _-]/, "", url)
+        gsub(/ /, "-", url)
+    }
+    if (is_internal) {
+        is_internal = 0
+        internal_functions = internal_functions render("h2", func_name) "\n" docblock "\n"
+        toc_internals = toc_internals "* [" func_name "](#" url ")" "\n"
+    } else {
+        doc = doc render("h2", func_name) "\n" docblock "\n"
+        toc = toc "* [" func_name "](#" url ")" "\n"
+    }
+
+    docblock = ""
+    reset()
 }
 
 END {
