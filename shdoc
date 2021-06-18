@@ -237,7 +237,6 @@ in_example {
     in_function = 1
     if (!has_args) {
         has_args = 1
-
         docblock = docblock "\n" render("h3", "Arguments") "\n\n"
     }
 
@@ -274,13 +273,10 @@ in_example {
     in_function = 1
     if (!has_exitcode) {
         has_exitcode = 1
-
         docblock = docblock "\n" render("h3", "Exit codes") "\n\n"
     }
 
     sub(/^[[:space:]]*# @exitcodes /, "")
-	
-
     docblock = docblock render("li", $0) "\n"
 }
 
@@ -371,10 +367,10 @@ function handle_description() {
         was_file_description = 1
         file_description = render("h1", "Overview") "\n" description
     } else {
-        # Ff a global description was already defined, or a description is just ended or is starting a new function directive, then we know
+        # If a global description was already defined, or a description is just ended or is starting a new function directive, then we know
         # the current description is a function description.
         reset()
-        docblock = description
+        docblock = description docblock
     }
     description = ""
 }
@@ -391,7 +387,6 @@ in_description {
     if (/^[^[[:space:]]*#]|^[[:space:]]*# @[^d]|^[[:space:]]*[^#]/) {
         if (!match(description, /\n$/)) {
             description = description "\n"
-            #docblock = docblock "\n"
         }
         in_description = 0
         handle_description()
